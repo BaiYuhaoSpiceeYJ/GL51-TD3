@@ -15,18 +15,18 @@ class MovieClientImplTest extends Specification {
     @Inject MovieClientImpl client
     @Inject MovieRegistry registry
 
-    void "injection should work"() {
+    void "injectionShouldWork"() {
         expect:
         registry != null
         client != null
     }
 
-    void "favorites should be empty"() {
+    void "favoritesShouldBeEmpty"() {
         expect:
         registry.listFavorites() == []
     }
 
-    void "get the movie by the imdbID should work"() {
+    void "getTheMovieByTheImdbIDShouldWork"() {
         when:
         registry.addMovieToFavorites("zhk")
         then:
@@ -36,7 +36,7 @@ class MovieClientImplTest extends Specification {
     }
 
     @MockBean(MovieClientImpl)
-    MovieClient client() {
+    MovieClient client1() {
         def mock = Mock(MovieClient)
         mock.getMovieDetail("zhk") >> new Movie("zhk")
         mock
